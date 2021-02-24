@@ -94,5 +94,8 @@ int main(){
 		rt[i].update();
 		rt[i].show();
 	}
+	cout<<"\n*******************************************\n";
+	cout<<"End to end delay = diameter of graph + constant time units\n";
+	cout<<"*******************************************\n";
 	return 0;
 }
