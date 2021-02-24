@@ -97,7 +97,7 @@ int main(){
 		for(int i=0; i<node; i++) rt[i].show();
 	}
 	cout<<"\n*********************************\n";
-	cout<<"End to end delay = "<<node<<" time units\n";
+	cout<<"End to end delay = "<<node-1<<" time units\n";
 	cout<<"*********************************\n";
 	return 0;
 }
