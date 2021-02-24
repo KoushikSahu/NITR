@@ -8,7 +8,8 @@ vector<int> graph[MAX_ROUTER_CNT];
 
 class RoutingTable {
 	private:
-		int** rt, n, a;
+		int** rt;
+		int n, a;
 	public:
 		RoutingTable(){
 
