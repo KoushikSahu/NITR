@@ -51,21 +51,39 @@ int main(){
 		}
 	}
 	cout<<"********************************************************\n";
+    int curr_evt[p];
+    fill_n(curr_evt, p, 0);
 	cout<<"Timestamp updates are as follows: \n";
+    priority_queue<int, vector<int>, greater<int>> pq[e+5];
 	while(!q.empty()){
 		Event evt = q.front();
 		q.pop();
 		if(evt.type=='s'){
 			ts[evt.src]++;
+            pq[ts[evt.src]].push(evt.src);
 			cout<<"Timestamp of "<<evt.src+1<<" process send event: "<<ts[evt.src]<<"\n";
 		}else if(evt.type=='r'){
 			ts[evt.dest] = max(ts[evt.dest], ts[evt.src]) + 1;
+            pq[ts[evt.dest]].push(evt.dest);
 			cout<<"Timestamp of "<<evt.dest+1<<" process receive event: "<<ts[evt.dest]<<"\n";
 		}else if(evt.type=='e'){
 			ts[evt.src]++;
+            pq[ts[evt.src]].push(evt.src);
 			cout<<"Timestamp of "<<evt.src+1<<" process event: "<<ts[evt.src]<<"\n";
 		}
 	}
+    vector<string> ans;
+    for(auto i: pq){
+        while(!i.empty()){
+            int prc = i.top();
+            i.pop();
+            curr_evt[prc]++;
+            ans.push_back("e"+to_string(prc+1)+to_string(curr_evt[prc]));
+        }
+    }
+    cout<<"************ Total ordering **************\n";
+    for(string i: ans) cout<<i<<" -> ";
+    cout<<"\n";
     return 0;
 }
 
