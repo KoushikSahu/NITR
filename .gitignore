@@ -2,3 +2,12 @@
 a.out
 client
 server
+
+# code from other people
+not-mine/
+
+# ipynb caches
+.ipynb_checkpoints/
+
+# data
+data/
