@@ -63,5 +63,5 @@ if __name__ == '__main__':
     while valid(action):
         action.append(env.move())
     print(f'Actions: {action}')
-    print(env.performance_score())
+    print(f'Performance score: {env.performance_score()}')
 
