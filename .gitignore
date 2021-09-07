@@ -3,11 +3,13 @@ a.out
 client
 server
 
-# code from other people
-not-mine/
+# not necessary files
+ignore-files/
+test*
 
 # ipynb caches
 .ipynb_checkpoints/
 
 # data
 data/
+
