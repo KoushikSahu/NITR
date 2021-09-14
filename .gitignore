@@ -7,8 +7,9 @@ server
 ignore-files/
 test*
 
-# ipynb caches
+# python caches
 .ipynb_checkpoints/
+__pycache__/
 
 # data
 data/
