@@ -6,6 +6,7 @@ server
 # not necessary files
 ignore-files/
 test*
+*.in
 
 # python caches
 .ipynb_checkpoints/
