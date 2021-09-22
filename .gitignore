@@ -8,10 +8,12 @@ ignore-files/
 test*
 *.in
 
-# python caches
+# caches
 .ipynb_checkpoints/
 __pycache__/
+*~
 
 # data
 data/
+*.csv
 
