@@ -1,0 +1,286 @@
+State 21 conflicts: 4 shift/reduce
+
+
+Grammar
+
+    0 $accept: Input $end
+
+    1 Input: %empty
+    2      | Input Line
+
+    3 Line: NL
+    4     | Expression NL
+
+    5 Operand: VAR
+    6        | TRUE
+    7        | FALSE
+
+    8 Operator: AND
+    9         | OR
+   10         | IMP
+   11         | IFF
+
+   12 Expression: Operand
+   13           | Expression Operator Expression
+   14           | NOT Expression
+   15           | LEFT Expression RIGHT
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    TRUE (258) 6
+    FALSE (259) 7
+    VAR (260) 5
+    NOT (261) 14
+    AND (262) 8
+    OR (263) 9
+    IMP (264) 10
+    IFF (265) 11
+    LEFT (266) 15
+    RIGHT (267) 15
+    NL (268) 3 4
+
+
+Nonterminals, with rules where they appear
+
+    $accept (14)
+        on left: 0
+    Input (15)
+        on left: 1 2
+        on right: 0 2
+    Line (16)
+        on left: 3 4
+        on right: 2
+    Operand (17)
+        on left: 5 6 7
+        on right: 12
+    Operator (18)
+        on left: 8 9 10 11
+        on right: 13
+    Expression (19)
+        on left: 12 13 14 15
+        on right: 4 13 14 15
+
+
+State 0
+
+    0 $accept: . Input $end
+
+    $default  reduce using rule 1 (Input)
+
+    Input  go to state 1
+
+
+State 1
+
+    0 $accept: Input . $end
+    2 Input: Input . Line
+
+    $end   shift, and go to state 2
+    TRUE   shift, and go to state 3
+    FALSE  shift, and go to state 4
+    VAR    shift, and go to state 5
+    NOT    shift, and go to state 6
+    LEFT   shift, and go to state 7
+    NL     shift, and go to state 8
+
+    Line        go to state 9
+    Operand     go to state 10
+    Expression  go to state 11
+
+
+State 2
+
+    0 $accept: Input $end .
+
+    $default  accept
+
+
+State 3
+
+    6 Operand: TRUE .
+
+    $default  reduce using rule 6 (Operand)
+
+
+State 4
+
+    7 Operand: FALSE .
+
+    $default  reduce using rule 7 (Operand)
+
+
+State 5
+
+    5 Operand: VAR .
+
+    $default  reduce using rule 5 (Operand)
+
+
+State 6
+
+   14 Expression: NOT . Expression
+
+    TRUE   shift, and go to state 3
+    FALSE  shift, and go to state 4
+    VAR    shift, and go to state 5
+    NOT    shift, and go to state 6
+    LEFT   shift, and go to state 7
+
+    Operand     go to state 10
+    Expression  go to state 12
+
+
+State 7
+
+   15 Expression: LEFT . Expression RIGHT
+
+    TRUE   shift, and go to state 3
+    FALSE  shift, and go to state 4
+    VAR    shift, and go to state 5
+    NOT    shift, and go to state 6
+    LEFT   shift, and go to state 7
+
+    Operand     go to state 10
+    Expression  go to state 13
+
+
+State 8
+
+    3 Line: NL .
+
+    $default  reduce using rule 3 (Line)
+
+
+State 9
+
+    2 Input: Input Line .
+
+    $default  reduce using rule 2 (Input)
+
+
+State 10
+
+   12 Expression: Operand .
+
+    $default  reduce using rule 12 (Expression)
+
+
+State 11
+
+    4 Line: Expression . NL
+   13 Expression: Expression . Operator Expression
+
+    AND  shift, and go to state 14
+    OR   shift, and go to state 15
+    IMP  shift, and go to state 16
+    IFF  shift, and go to state 17
+    NL   shift, and go to state 18
+
+    Operator  go to state 19
+
+
+State 12
+
+   13 Expression: Expression . Operator Expression
+   14           | NOT Expression .
+
+    AND  shift, and go to state 14
+    OR   shift, and go to state 15
+    IMP  shift, and go to state 16
+    IFF  shift, and go to state 17
+
+    $default  reduce using rule 14 (Expression)
+
+    Operator  go to state 19
+
+
+State 13
+
+   13 Expression: Expression . Operator Expression
+   15           | LEFT Expression . RIGHT
+
+    AND    shift, and go to state 14
+    OR     shift, and go to state 15
+    IMP    shift, and go to state 16
+    IFF    shift, and go to state 17
+    RIGHT  shift, and go to state 20
+
+    Operator  go to state 19
+
+
+State 14
+
+    8 Operator: AND .
+
+    $default  reduce using rule 8 (Operator)
+
+
+State 15
+
+    9 Operator: OR .
+
+    $default  reduce using rule 9 (Operator)
+
+
+State 16
+
+   10 Operator: IMP .
+
+    $default  reduce using rule 10 (Operator)
+
+
+State 17
+
+   11 Operator: IFF .
+
+    $default  reduce using rule 11 (Operator)
+
+
+State 18
+
+    4 Line: Expression NL .
+
+    $default  reduce using rule 4 (Line)
+
+
+State 19
+
+   13 Expression: Expression Operator . Expression
+
+    TRUE   shift, and go to state 3
+    FALSE  shift, and go to state 4
+    VAR    shift, and go to state 5
+    NOT    shift, and go to state 6
+    LEFT   shift, and go to state 7
+
+    Operand     go to state 10
+    Expression  go to state 21
+
+
+State 20
+
+   15 Expression: LEFT Expression RIGHT .
+
+    $default  reduce using rule 15 (Expression)
+
+
+State 21
+
+   13 Expression: Expression . Operator Expression
+   13           | Expression Operator Expression .
+
+    AND  shift, and go to state 14
+    OR   shift, and go to state 15
+    IMP  shift, and go to state 16
+    IFF  shift, and go to state 17
+
+    AND       [reduce using rule 13 (Expression)]
+    OR        [reduce using rule 13 (Expression)]
+    IMP       [reduce using rule 13 (Expression)]
+    IFF       [reduce using rule 13 (Expression)]
+    $default  reduce using rule 13 (Expression)
+
+    Operator  go to state 19

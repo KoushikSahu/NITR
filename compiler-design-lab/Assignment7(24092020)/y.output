@@ -1,0 +1,104 @@
+Terminals unused in grammar
+
+    LEX_ERROR
+
+
+Grammar
+
+    0 $accept: STMT $end
+
+    1 STMT: HYPHEN BIN_STR NL
+    2     | BIN_STR NL
+
+    3 BIN_STR: BIN
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    HYPHEN (258) 1
+    BIN (259) 3
+    NL (260) 1 2
+    LEX_ERROR (261)
+
+
+Nonterminals, with rules where they appear
+
+    $accept (7)
+        on left: 0
+    STMT (8)
+        on left: 1 2
+        on right: 0
+    BIN_STR (9)
+        on left: 3
+        on right: 1 2
+
+
+State 0
+
+    0 $accept: . STMT $end
+
+    HYPHEN  shift, and go to state 1
+    BIN     shift, and go to state 2
+
+    STMT     go to state 3
+    BIN_STR  go to state 4
+
+
+State 1
+
+    1 STMT: HYPHEN . BIN_STR NL
+
+    BIN  shift, and go to state 2
+
+    BIN_STR  go to state 5
+
+
+State 2
+
+    3 BIN_STR: BIN .
+
+    $default  reduce using rule 3 (BIN_STR)
+
+
+State 3
+
+    0 $accept: STMT . $end
+
+    $end  shift, and go to state 6
+
+
+State 4
+
+    2 STMT: BIN_STR . NL
+
+    NL  shift, and go to state 7
+
+
+State 5
+
+    1 STMT: HYPHEN BIN_STR . NL
+
+    NL  shift, and go to state 8
+
+
+State 6
+
+    0 $accept: STMT $end .
+
+    $default  accept
+
+
+State 7
+
+    2 STMT: BIN_STR NL .
+
+    $default  reduce using rule 2 (STMT)
+
+
+State 8
+
+    1 STMT: HYPHEN BIN_STR NL .
+
+    $default  reduce using rule 1 (STMT)

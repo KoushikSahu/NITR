@@ -1,0 +1,27 @@
+@ARTICLE{article-full,
+author={Leslie},
+title={The Gnats and Gnus Document Preparation System},
+journal={Animal},
+year=1986,
+page=73,
+}
+@BOOK{book-full,
+author={Donald},
+title={Seminumerical Algorithms},
+volume=2,
+publisher={Addison Wesley},
+}
+@INPROCEEDINGS{inproceedings-minimal,
+author={Alfred},
+title={Lower Bounds on wishful research results},
+editor={Wizard},
+series={ACM},
+year=1990,
+publisher={Academic Press},
+}
+@BOOK{book-full,
+author={Donald},
+title={Seminumerical Algorithms},
+volume=2,
+publisher={Addison Wesley},
+}
