@@ -20,4 +20,6 @@ data/
 
 # net simulation lab files
 *.pcap
+*.xml
+*.tr
 
