@@ -7,4 +7,3 @@ food(Y) :- eats(X, Y), not(killed(X)).
 likes(john,X) :- food(X).
 eats(anil, peanuts).
 eats(harry, X) :- eats(anil, X).
-
