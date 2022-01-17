@@ -17,6 +17,7 @@ __pycache__/
 # data
 data/
 *.csv
+*.npy
 
 # net simulation lab files
 *.pcap
