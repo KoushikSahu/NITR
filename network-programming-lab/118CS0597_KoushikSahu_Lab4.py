@@ -2,7 +2,11 @@ import socket
 import argparse
 
 def find_service_name(port: int, protocol: str) -> str: 
-    return socket.getservbyport(port, protocol)
+    try:
+        service_name = socket.getservbyport(port, protocol)
+    except:
+        raise Exception(f"Can't find service name. Check if {protocol} connection available on the port.")
+    return service_name
      
 
 def main() -> None:
