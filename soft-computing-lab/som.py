@@ -6,13 +6,9 @@ import os
 
 
 if __name__ == '__main__':
-    path = '.'
-    all_files = glob.glob(os.path.join(path, "*.csv"))
+    df = pd.read_csv('./en_climate_summaries_All_03-2022.csv')
 
-    df_from_each_file = (pd.read_csv(f, skiprows = 31) for f in all_files)
-    concatenated_df   = pd.concat(df_from_each_file, ignore_index=True)
-
-    data = concatenated_df[['Lat', 'Long', 'Tm', 'Tx', 'Tn', 'P']]
+    data = df[['Lat', 'Long', 'Tm', 'Tx', 'Tn', 'P']]
     data = data.apply(pd.to_numeric,  errors='coerce')
     data = data.dropna(how='any')
     names = ['Latitude', "longitude", 'Monthly Median temperature (C)','Monthly Max temperature (C)', 'Monthly Min temperature (C)', 'Monthly total precipitation (mm)']
@@ -64,7 +60,7 @@ if __name__ == '__main__':
             soup = BeautifulSoup(htmltxt, 'html.parser')
             body = soup.body
             src = apistring % (apikey, )
-            tscript = soup.new_tag("script", src=src, async="defer")
+            tscript = soup.new_tag("script", src=src)
             body.insert(-1, tscript)
             return soup
         htmltxt = open(fname, 'r').read()
@@ -82,4 +78,3 @@ if __name__ == '__main__':
         j += 1
 
     gmap.draw("centroids_map.html")
-

@@ -5,6 +5,10 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 
+# training data available at https://www.kaggle.com/competitions/digit-recognizer/data 
+# download the data, unzip and rename train.csv to mnist_train.csv
+
+
 def get_distance(x1, x2):
     sum = 0
     for i in range(len(x1)):

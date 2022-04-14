@@ -63,6 +63,7 @@ class Hebbian:
             print(self.wt)
         print()
 
+
     def plot_decision_boundary(self):
         for i, j, _ in self.X:
             plt.scatter(i, j)

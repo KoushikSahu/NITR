@@ -34,6 +34,7 @@ class Hopfield:
                 self.x_to_index[(i, j)] = cnt
                 cnt += 1
 
+
     def train(self, A, B, C, D):
         n = self.cities
         for i in range(n):
@@ -46,6 +47,7 @@ class Hopfield:
                         wd = -D*self.d[i][j]*(1-kronecker_delta(i, j))*(kronecker_delta(a-1, b) + kronecker_delta(a+1, b))
 
                         self.w[self.x_to_index[(i, a)]][self.x_to_index[(j, b)]] = wa + wb + wc + wd
+
 
     def predict(self, A, B, C, D, max_iterations):
         self.train(A, B, C, D)
@@ -76,6 +78,7 @@ class Hopfield:
 
         return ret
 
+
     def update(self, u, C):
         n = self.cities
         for iteration in range(5*n**2):
@@ -84,8 +87,10 @@ class Hopfield:
             u[self.x_to_index[(i, x)]][0] = self.f(np.dot(u.transpose(), self.w[:, self.x_to_index[(i, x)]]) + C*(n+1))
         return u
 
+
     def f(self, x):
         return 0.5*(1+np.tanh(self.alpha*x))
+
 
     def calc_error(self, u, A, B, C, D):
         tmpA = 0
@@ -185,3 +190,4 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
