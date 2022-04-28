@@ -15,7 +15,7 @@ def main() -> None:
         )
 
     parser.add_argument('--port',  type=int, dest="port", required=False, help="specify port")
-    parser.add_argument('--protocol',  type=str, dest="protocol", required=False, help="specify port (tcp/upd)")
+    parser.add_argument('--protocol',  type=str, dest="protocol", required=False, help="specify protocol name (tcp/upd)")
 
     args: argparse.Namespace = parser.parse_args()
     port: int = args.port or 80
