@@ -1,3 +1,4 @@
 # NITR
 
-Solution to assignments at my institution NIT, Rourkela
+Submitted solutions to assignments during my bachelor's in CSE at NIT, Rourkela
+
